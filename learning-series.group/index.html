@@ -1,0 +1,168 @@
+{embed="includes/.html_head"}
+{embed="includes/.topmenu"}
+
+<!-- Learning Series Page Layout
+	================================================== -->
+
+{!--{embed="site/.learning_series_detail"}--}
+
+
+
+<div class="container">
+
+	<div class="sixteen columns add-top">
+			
+	<!--<div class="fourteen columns add-top ">	-->
+			
+	<article>	
+			
+	{exp:channel:entries channel="learning_series" limit="1" disable="pagination|member_data|trackbacks"}
+			
+            <h2>{title}</h2>
+            <hr />
+
+		<!--<div class="article-image">
+                    {promo_image}
+                        {exp:ce_img:pair src="{promo_image:image_file}" width="760" height="432" crop="yes"}
+                        <a><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" /></a>
+                         {/exp:ce_img:pair}
+                        <div class="image-credit-hover">{promo_image:image_title} | {promo_image:image_credit} | {promo_image:image_licence}</div>
+                    {/promo_image}
+                        <!--<br class="clear" />-->
+                       <!-- </div>-->
+		
+            <br class="clear" />
+            
+            <div class="sixteen columns add-bottom ">	
+            <div class="pubdate entry">{entry_date format="%M %d, %Y"}
+            </div>			
+            <h4>Author: {author}</h4>	
+            </div>
+                    
+            <br class="clear" />
+            
+            <div class="standfirst-entry">
+            <p>{standfirst_learning}</p>
+            </div>
+			
+		<!--<p>{first_para}	</p>-->
+	
+	
+	{learning_series_overview}
+		
+            {heading}
+            {value}
+            {/heading}
+            
+            
+            {editor}
+            {value}
+            {/editor}
+            
+            {assets}
+            <div class="article-image">
+            {files kind="image"}
+            
+            {exp:ce_img:pair src="{url}" width="400" height="3auto" crop="yes"}
+            <a><img src="{url}" alt="" width="{width}" height="{height}" style="float:right;margin:0 auto;" /></a>
+            {/exp:ce_img:pair}
+            <div class="image-credit-hover">{title} | {author} | {location}</div>
+            {/files}
+            </div>
+            {/assets}
+
+            {assets}
+            <ul>
+            {files kind="pdf|word|excel|text|audio|video" var_prefix="download"}
+            <li>{download:title}, {download:desc}, {download:author}: <a href="{url}">
+            {download:filename}.{download:extension} </a>[{download:size}]</li>
+            {/files}
+            </ul>
+            {/assets}
+                    
+            {table}
+            <table width="100%" cellpadding="5" cellspacing="0" border="1">
+            <thead>
+                    {thead}
+                            <tr>{cells}<th>{value}</th>{/cells}</tr>
+                    {/thead}
+            </thead>
+            <tbody>
+                    {tbody}
+                            <tr>{cells}<td>{value}</td>{/cells}</tr>
+                    {/tbody}
+            </tbody>
+            </table>
+            {/table}
+                        
+	{/learning_series_overview}<!--/ end of content elements fields-->
+
+       
+ 
+      <div class="five columns learning-series-quote-panel">
+        {series_highlights}
+        {editor}
+        {/series_highlights}
+        </div>
+          
+     
+          
+          
+       <!--relationship entries for learning series-->
+        <div id="masonry-box1">
+        <ol class="eleven columns learning-series-entry-list custom-counter">
+        
+        {learning_series_entries}
+
+        <li class="ten columns item">
+      <h4>{learning_series_entries:title}</h4>
+        {learning_series_entries:promo_image}
+	{exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
+	<img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/>
+	{/learning_series_entries:promo_image}		
+        {/exp:ce_img:pair}
+        {learning_series_entries:standfirst}
+     <div class="hover-more"> <a> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>    
+       
+ 
+   
+        {/learning_series_entries}  
+        </div><!--/#masonry-box-->
+        </ol>   
+    
+          <br class="clear" />
+	
+	{if "{refs:total_rows}" > 0}
+        <h4>Further Reading</h4>
+        <ul>   {refs}
+        <li>{refs:names}, {refs:pub_year}, {refs:title_work}, {refs:publisher}, {refs:country} </li>
+        {/refs}</ul>  
+        {/if}
+	
+	
+		
+	<!--</div>--><!--/.fourteen .columns-->
+	
+	</div><!--/.sixteen .columns-->
+
+	{/exp:channel:entries}
+        
+        
+	
+	</article>
+
+		
+<!--END OF Learning Series DETAIL - WOW, WE MADE IT!! -->
+
+
+
+
+
+
+
+
+
+
+		
+	
+{embed="includes/.footer"}
