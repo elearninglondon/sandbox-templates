@@ -1741,8 +1741,8 @@ article .article-image {
   height: 25px;
   padding: 20px 20px 50px 20px;
   position: absolute;
-  bottom: 30px;
-  left: 20px;
+  top: 30px;
+  right: 20px;
   color: #fff;
   display: none;
   font: 1.0em 'Oswald', sans-serif;
@@ -1769,7 +1769,7 @@ a:hover + .image-credit-hover {
   border-left: 7px solid #afddd6;
   margin: 0 auto 10px 10px; }
 
-.pullquote {
+.pullquote-left {
   min-height: 140px;
   background: #eff5e3 url(../img/quote-icons-3.png) no-repeat;
   -webkit-border-radius: 5px;
@@ -1903,6 +1903,26 @@ a:hover + .learning-series-entry-list-hover {
   width: 5px;
   float: left;
   color: #fff; }
+
+table th {
+  background: #d8e7de;
+  border: 3px solid #fff; }
+
+table tr, table td {
+  background: #e8e7e4;
+  border: 3px solid #fff;
+  padding: 5px; }
+
+.category-footer ul {
+  list-style: circle outside;
+  font: 0.9em "News Cycle", sans-serif;
+  font-size: 1.0em;
+  display: inline-block;
+  padding: 5px;
+  margin: 10px; }
+
+.category-footer ul li a {
+  display: inline; }
 
 @media only screen and (max-width: 479px) {
   .image-credit-hover {

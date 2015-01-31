@@ -1,16 +1,180 @@
-{embed="includes/.html_head"}
-{embed="includes/.topmenu"}
+{layout="includes/.html_layout"}
 
-<!-- Entry Page Layout
+<!-- ENTRY DETAIL 
 	================================================== -->
 
+<div class="container">
 
+	<div class="sixteen columns">
+			
+	<div class="fourteen columns add-top offset-by-one">	
+			
+	<article>	
+			
+	{exp:channel:entries channel="practice" limit="1" disable="pagination|member_data|trackbacks"}
+			
+		<h2>{title}</h2>
+		<hr />
 
-{embed="site/.entrydetail"}
+		<div class="article-image">
+	{promo_image}
+		{exp:ce_img:pair src="{promo_image:image_file}" width="760" height="432" crop="yes"}
+		<a><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" /></a>
+		 {/exp:ce_img:pair}
+		<div class="image-credit-hover">{promo_image:image_title} | {promo_image:image_credit} | {promo_image:image_licence}</div>
+	{/promo_image}
+		<!--<br class="clear" />-->
+		</div>
+		
+		<br class="clear" />
+		
+		<div class="thirteen columns add-bottom ">	
+		<div class="pubdate entry">{entry_date format="%M %d, %Y"}</div>			
+		<h4>Author: {author}</h4>	
+		</div>
+			
+		<br class="clear" />
+		
+		<div class="standfirst-entry">
+		<p>{standfirst}</p>
+		</div>
+			
+		<p>{first_para}	</p>
+	
+	
+	{content}
+		
+		{heading}
+		{value}
+		{/heading}
+		
+		{editor}	      
+		<div>{value}</div>
+		{/editor}
+		
+		{table}
+		<table width="100%" cellpadding="5" cellspacing="2" class="tables">
+		<thead>
+			{thead}
+				<tr>{cells}<th>{value}</th>{/cells}</tr>
+			{/thead}
+		</thead>
+		<tbody>
+			{tbody}
+				<tr>{cells}<td>{value}</td>{/cells}</tr>
+			{/tbody}
+		</tbody>
+		</table>
+		{/table}
+		
+		
+		{textarea}
+		{if element_name=="Quote"}
+		<div class="one-third column pullquote-left">{value}</div>
+		{if:elseif element_name=="Quote Right"}
+		<div class="one-third column pullquote-right">{value}</div>
+		{if:else}<!--Embed Video-->
+		<div class="offset-by-two">{value}</div>
+		{/if}
+		{/textarea}
+		
+                
+                <!--IMAGE SLIDESHOW IN BODY-->
+		{assets}
+		<div class="article-image">
+		{files kind="image"}
+                  
+		{exp:ce_img:pair src="{url}" width="800" height="400"}
+                
+		{!--<a><img src="{url}" alt="" width="{width}" height="{height}" style="float:left;margin:0 auto;"/></a>--}
+                
+                <div id="switcher-panel"></div><!--/#switcher-panel-->
+                
+                {if count == "1"}
+                 <div id="{name}-content" class="switcher-content show"><a class="switcher">{exp:ce_img:single src="{url}" width="800" height="400" crop="yes"}</a>
+                 <div class="image-credit-hover">{title} | {author} | {location}</div>
+                 </div>
+                                   
+                {/if}
+
+                {if count >= "1"}
+                <div class="article-image-thumbs">
+                {exp:ce_img:bulk src="{url}" width="120" height="90" crop="yes" attributes ='style="float:left;margin:0 auto;"'}<a id="{name}" class="switcher"><img src="{url}" alt="" width="{width}" height="{height}"  /></a>
+                {/exp:ce_img:bulk}
+                </div>
+                
+                <div id="{name}-content" class="switcher-content">
+                <a>{exp:ce_img:single src="{url}" width="800" height="400" crop="yes"}</a>
+                 <div class="image-credit-hover">{title} | {author} | {location}</div>
+                </div>
+                
+                {/if}
+
+                {/exp:ce_img:pair}
+
+		{/files}
+		</div>
+		{/assets}
+                
+
+		{assets}
+		<ul>
+		{files kind="pdf|word|excel|text|audio|video" var_prefix="download"}
+		<li>{download:title}, {download:desc}, {download:author}: <a href="{url}">{download:filename}.{download:extension} </a>[{download:size}]</li>
+		{/files}
+		</ul>
+		{/assets}
+		
+		
+		{if fieldpack_list}
+		{fieldpack_list}
+		<h4>Links</h4> 
+		<ul>
+		{values}
+		<li><a href="{item}">{item}</a></li>
+		{/values}
+		</ul>
+		{/fieldpack_list}
+		{/if}
+       
+
+	{/content}<!--/ end of content elements fields-->
+
+	
+                {if "{refs:total_rows}" > 0}
+                         <h4>Further Reading</h4>
+                        <ul>   {refs}
+                        <li>{refs:names}, {refs:pub_year}, {refs:title_work}, {refs:publisher}, {refs:country} </li>
+                        {/refs}</ul>  
+                {/if}
+	
+        
+	
+	</div><!--/.fourteen .columns .offset-by-one-->
+        
+        <div class="fourteen columns add-top category-footer">
+            
+		<h5>Categories</h5>
+                {categories}
+                
+                    <ul>
+                     <li> <a href="{path={segment_1}/list/}">{category_name}</a>
+                     </li>
+                    </ul>
+                {/categories}
+                
+        </div><!--/.fourteen .columns-->
+	
+	</div><!--/.sixteen .columns-->
+
+	{/exp:channel:entries}
+	
+	</article>
+        
+   
+       
 
 		
-	
-{embed="includes/.footer"}
-
+<!--END OF ENTRY DETAIL - WOW, WE MADE IT!! -->
 
 
