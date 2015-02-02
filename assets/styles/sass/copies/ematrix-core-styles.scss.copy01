@@ -159,16 +159,6 @@ aside[role="complimentary"] {
   display: block;
 }
 
-@mixin category-footer-list {
-   border-left: 7px solid rgb(0,200,200);
-    list-style: circle inside;
-  //  font:$gf-footers;
-    font-size: 1.0em;
-   // display:inline-block;
-    padding:5px 0px 0px 20px;
-    margin:10px 10px auto 0px;
-}
-
 @mixin article-image{
     width:760px;
     padding:0px;
@@ -188,7 +178,7 @@ aside[role="complimentary"] {
     padding:20px 20px 50px 20px;
     position: absolute;
     top:30px;
-    right:40px;
+    right:20px;
     color:#fff;
     display:none;
     font: 1.0em 'Oswald', sans-serif;
@@ -311,14 +301,25 @@ img.logotop {
     padding:$image-promo-list
  }
 
+footer.mainfooter{
+    padding-top:10px;
+    height:200px;
+    font:$gf-footers;
+    border-top:$leaf-border;
+}
+
 
 article ul {
     @include article-list;
 }
 
+/*article ul li {
+      @include article-list;
+    display: inline-block;
+  position: relative;
+}*/
 article .article-image {
     @include article-image;
-    height:auto;
 }
 
 .image-credit-hover {
@@ -331,15 +332,10 @@ a:hover + .image-credit-hover {
     cursor: pointer;
 }
 
-.article-image-thumbs {
-   // height:auto;
-    //overflow:hidden;
-}
-
 .article-image-thumbs img{
     float:left;
-    margin:0 2px 5px 0px;
-    padding:0px;
+    margin:0 1px 5px 0;
+    padding:1px 5px 0px 0px;
 }
 .pubdate {
     font: $gf-body-italic;
@@ -382,22 +378,12 @@ a:hover + .image-credit-hover {
     line-height: 1.5em;
 }
 
-.learning-series-quote-panel {
-    float:right !important;
-    font:$gf-body-italic;
-    background: #f9e9dd url(../img/quote-icons-4.png) 100% 0% no-repeat;
-    min-height:280px;
-    padding:20px;
-    overflow:hidden;
-    @include border-radius(5px);
-}
-
 .learning-series-entry-list h4{
    font: $gf-h4-relationships 
 }
 
 .learning-series-entry-list li.item {
-    border-left: 7px solid rgb(0,200,200);
+    border-left: 7px solid /*#cae2c9 */ rgb(0,200,200);
     padding:5px 10px 5px 10px;
     margin:1px 10px 40px 10px !important;
     float:left;
@@ -442,7 +428,15 @@ a:hover + .learning-series-entry-list-hover{
     @include custom-counter-li-before;
 }
 
-
+.learning-series-quote-panel {
+    float:right !important;
+    font:$gf-body-italic;
+    background: #f9e9dd url(../img/quote-icons-4.png) 100% 0% no-repeat;
+    min-height:280px;
+    padding:20px;
+    overflow:hidden;
+    @include border-radius(5px);
+}
 
 //MASONRY BOX
 
@@ -480,7 +474,6 @@ a:hover + .learning-series-entry-list-hover{
 table th {
     background: rgb(216, 231, 222);
     border: 3px solid $primary-color;
-    padding:5px;
 }
 table tr, table td {
     background: rgb(232, 231, 228);
@@ -488,22 +481,19 @@ table tr, table td {
     padding: 5px;
 }
 
-//PAGE FOOTER, CATEGORY LIST DISPLAY
-
-
-footer.mainfooter{
-    padding-top:10px;
-    height:200px;
-    font:$gf-footers;
-    border-top:$leaf-border;
-}
+//PAGE FOOTER CATEGORY LIST DISPLAY
 
 .category-footer ul {
-@include category-footer-list;
+    list-style: circle outside;
+    font:$gf-footers;
+    font-size: 1.0em;
+    display:inline-block;
+    padding:5px;
+    margin:10px 10px auto 20px;
 }
 
 .category-footer ul li a {
-    display:inline !important;
+    display:inline;
 }
 
 
@@ -515,12 +505,11 @@ iframe, embed, object {
 }
 
  #player, .speakerdeck-iframe{
-    max-height: 370px;
+    max-height: 300px;
     padding-top: 25px;
     padding-bottom: 75%; /* 4:3 */
     width: 100%;
-    //position: relative;
-    margin-bottom:15px !important;
+    position: relative;	
 }
 
 // css-tricks advice on responsive embed

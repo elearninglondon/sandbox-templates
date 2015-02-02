@@ -1,7 +1,12 @@
-{layout="includes/.html_layout"}
+{embed="includes/.html_head"}
+{embed="includes/.topmenu"}
 
 <!-- Learning Series Page Layout
 	================================================== -->
+
+{!--{embed="site/.learning_series_detail"}--}
+
+
 
 <div class="container">
 
@@ -93,29 +98,26 @@
           
      
           
-         
-            <!--relationship entries for learning series-->
-             <div id="masonry-box1">
-             <ol class="eleven columns learning-series-entry-list custom-counter">
-            
-             {learning_series_entries}
-     
-             <li class="ten columns item">
-           <h4><a href="{path="site/entry"}/{learning_series_entries:url_title}">{learning_series_entries:title}</a></h4>
-             {learning_series_entries:promo_image}
-        {exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
-        <a href="{path="site/entry"}/{learning_series_entries:url_title}"/><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/></a>
-        {/learning_series_entries:promo_image}		
-             {/exp:ce_img:pair}
-             {learning_series_entries:standfirst}
-          <div class="hover-more"> <a href="{path="site/entry"}/{learning_series_entries:url_title}"> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>  
           
-          
-         {!--  {embed="includes/.related-learning"}            --}
+       <!--relationship entries for learning series-->
+        <div id="masonry-box1">
+        <ol class="eleven columns learning-series-entry-list custom-counter">
+        
+        {learning_series_entries}
+
+        <li class="ten columns item">
+      <h4>{learning_series_entries:title}</h4>
+        {learning_series_entries:promo_image}
+	{exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
+	<img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/>
+	{/learning_series_entries:promo_image}		
+        {/exp:ce_img:pair}
+        {learning_series_entries:standfirst}
+     <div class="hover-more"> <a> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>    
        
  
    
-        {/learning_series_entries}       
+        {/learning_series_entries}  
         </div><!--/#masonry-box-->
         </ol>   
     
@@ -142,3 +144,16 @@
 
 		
 <!--END OF Learning Series DETAIL - WOW, WE MADE IT!! -->
+
+
+
+
+
+
+
+
+
+
+		
+	
+{embed="includes/.footer"}

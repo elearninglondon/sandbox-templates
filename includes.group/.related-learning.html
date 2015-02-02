@@ -1,0 +1,20 @@
+  
+  	    
+       <!--relationship entries for learning series-->
+        <div id="masonry-box1">
+        <ol class="eleven columns learning-series-entry-list custom-counter">
+       
+        {learning_series_entries}
+
+        <li class="ten columns item">
+      <h4><a href="{exp:channel:entries channel="practice" limit="1" disable="member_data|trackbacks"}
+{path={channel_short_name}/{url_title}}{/exp:channel:entries}">{learning_series_entries:title}</a></h4>
+        {learning_series_entries:promo_image}
+	{exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
+	<a href="{channel_url}entry/{url_title}"/><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/></a>
+	{/learning_series_entries:promo_image}		
+        {/exp:ce_img:pair}
+        {learning_series_entries:standfirst}
+     <div class="hover-more"> <a href="{channel_url}entry/{url_title}"> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>
+	
+	 
