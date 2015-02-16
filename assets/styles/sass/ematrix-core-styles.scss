@@ -194,7 +194,35 @@ aside[role="complimentary"] {
     font: 1.0em 'Oswald', sans-serif;
 }
 
+@mixin homepage-image-desc {
+    background: rgb(182, 186, 187);
+    background: rgba(182, 186, 187, 0.6);
+    //max-width: 100%;
+    height:150px;
+    padding:20px 20px 20px 20px;
+    position: absolute;
+    top:190px;
+    left:20px;
+    color:#fff;
+    display:block;
+    z-index:20;
+    font: 1.0em 'Oswald', sans-serif;
+}
 
+@mixin homepage-image-desc-th {
+    background: rgb(182, 186, 187);
+    background: rgba(182, 186, 187, 0.6);
+   // max-width: 100%;
+    height:50px;
+    padding:10px 10px 10px 10px;
+    position: absolute;
+    bottom:20px;
+    right:10px;
+    color:#fff;
+    display:block;
+    z-index:20;
+    font: 1.0em 'Oswald', sans-serif;
+}
 
 
 /*
@@ -297,6 +325,11 @@ header{
     font-size: $header-menu-font-size;
 }
 
+.menu-header{
+    background-color:rgba(243,243,243,07);
+    //position:fixed;
+}
+
 img {
     padding: $image-padding;
 }
@@ -312,7 +345,7 @@ img.logotop {
  }
 
 
-article ul {
+article > ul {
     @include article-list;
 }
 
@@ -331,16 +364,33 @@ a:hover + .image-credit-hover {
     cursor: pointer;
 }
 
-.article-image-thumbs {
-   // height:auto;
-    //overflow:hidden;
+.homepage-image-desc {
+    @include image-credit-hover;
+    cursor: pointer;
 }
+
+/*a:hover + .homepage-image-desc {
+    display: block;
+    cursor: pointer;
+}*/
 
 .article-image-thumbs img{
     float:left;
     margin:0 2px 5px 0px;
     padding:0px;
 }
+
+.homepage-image-thumbs {
+    margin: 3px 0px 0px 0px;
+}
+
+.homepage-image-thumbs img{
+   // width:auto;
+
+   // margin:0px 2px -2px 0px;
+    padding:0px;
+}
+
 .pubdate {
     font: $gf-body-italic;
 }
@@ -364,7 +414,7 @@ a:hover + .image-credit-hover {
 .pullquote-left {
     min-height:140px;
     background: #eff5e3 url(../img/quote-icons-3.png) no-repeat;
-    @include border-radius(5px);
+  //  @include border-radius(5px);
     padding:40px;
     font:$gf-body-italic;
     color: #6c744f;
@@ -375,13 +425,15 @@ a:hover + .image-credit-hover {
     float:right !important;
     min-height:140px;
     background: #f9e4ee url(../img/quote-icons-4.png) 100% 0% no-repeat;
-    @include border-radius(5px);
+  //  @include border-radius(5px);
     padding:40px;
     font:$gf-body-italic;
     color: #6c744f;
     line-height: 1.5em;
 }
 
+
+//may not want this now as .quickbox-panel has replaced it
 .learning-series-quote-panel {
     float:right !important;
     font:$gf-body-italic;
@@ -389,14 +441,14 @@ a:hover + .image-credit-hover {
     min-height:280px;
     padding:20px;
     overflow:hidden;
-    @include border-radius(5px);
+   // @include border-radius(5px);
 }
 
 .learning-series-entry-list h4{
    font: $gf-h4-relationships 
 }
 
-.learning-series-entry-list li.item {
+.learning-series-entry-list > li.item {
     border-left: 7px solid rgb(0,200,200);
     padding:5px 10px 5px 10px;
     margin:1px 10px 40px 10px !important;
@@ -442,7 +494,71 @@ a:hover + .learning-series-entry-list-hover{
     @include custom-counter-li-before;
 }
 
+.quickbox-panel {
+    float:right !important;
+    font: $gf-footers;
+   background:#e1e9dd;
+    min-height:200px;
+    padding:20px;
+    overflow:hidden;
+    margin:0 auto;
+}
 
+.quickbox-section {
+    margin-bottom:10px;
+    max-height:300px;
+    min-height:70px;
+    border-bottom:$leaf-border;
+}
+
+.quickbox-links > ul li{
+    list-style-position:outside;
+    padding:5px 5px 5px 10px;
+    //margin-left:10px;
+    display:block;
+   border-left:none !important;
+}
+
+.quickbox-links ul > li a:before {
+      content: '\f101';
+    font-family: FontAwesome;
+    color: #3e9db3;
+    padding-right:20px;
+}
+   
+.quickbox-social ul li{
+    list-style: none;
+    padding:2px 2px 2px 2px;
+    display:inline;
+}
+
+.quickbox-social ul li img{
+    width:50px;
+    height:50px;
+}
+
+.homepage-image, .homepage-image-th {
+    position:relative;
+}
+
+.homepage-image-desc {
+    @include homepage-image-desc;
+}
+
+.homepage-image-desc-th {
+    @include homepage-image-desc-th;
+}
+
+.homepage-featured {
+    font-size: .9em;
+    float:left;
+    padding:5px;
+}
+
+.homepage-intro-section {
+    font-size: .9em;
+    padding:0px;
+}
 
 //MASONRY BOX
 
@@ -450,6 +566,10 @@ a:hover + .learning-series-entry-list-hover{
     clear:both;
     display:block;
     position: relative;
+}
+
+#masonry-box1 {
+    max-width:620px;
 }
 
 .item {
@@ -476,7 +596,10 @@ a:hover + .learning-series-entry-list-hover{
 }
 
 //TABLES
-
+table {
+    margin-bottom:20px;
+    max-width: 100%;
+}
 table th {
     background: rgb(216, 231, 222);
     border: 3px solid $primary-color;

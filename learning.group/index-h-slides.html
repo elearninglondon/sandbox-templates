@@ -1,0 +1,106 @@
+{layout="includes/.html_layout"}
+
+<!-- Index Page Layout
+	================================================== -->
+
+		
+		
+	        <div class="container">
+		
+		<!-- section for welcome screen-->
+		
+		<div class="sixteen columns"> 
+			
+			<h1 class="remove-bottom add-top">The London Met Elearning Matrix</h1>
+			<h5>Skills, Resources, Expertise and Research in the Academic Community</h5>
+			<hr />
+			
+		</div><!--/.sixteen columns-->
+		
+{exp:channel:entries channel="sitewide" disable="member_data|trackbacks|pagination" entry_id="11"}
+
+	<div class="article-image eleven columns">
+
+	<div id="switcher-panel"></div><!--/#switcher-panel to swap out images from thumbs-->
+	
+	  {promo_slideshow limit="1"}
+	
+		<div id="{promo_slideshow:row_id}-content" class="switcher-content show">	
+		<a>{exp:ce_img:single src="{promo_slideshow:image_selection}" width="620" height="350" crop="yes"}</a>
+		<div class="image-credit-hover">{promo_slideshow:title} <br /> {promo_slideshow:description} </div>	    
+		</div><!--/.switcher content show-->
+	  
+	  {/promo_slideshow}
+	  
+	  {promo_slideshow limit="4"}
+       
+		<div class="article-image-thumbs">
+		{exp:ce_img:bulk src="{promo_slideshow:image_selection}" width="150" height="95" crop="yes" attributes="style='margin:-4px 2px 2px 1px;'"}<a id="{promo_slideshow:row_id}" class="switcher"><img src="{promo_slideshow:image_selection}" alt="" width="{width}" height="{height}"  /></a>
+		{/exp:ce_img:bulk}
+		</div>
+		
+		<div id="{promo_slideshow:row_id}-content" class="switcher-content">   
+		{exp:ce_img:bulk src="{promo_slideshow:image_selection}" width="620" height="350" crop="yes"}<a id="{promo_slideshow:row_id}" class="switcher"><img src="{promo_slideshow:image_selection}" alt="" width="{width}" height="{height}"  /></a>
+		 <div class="image-credit-hover">{promo_slideshow:title} <br /> {promo_slideshow:description} </div>
+		{/exp:ce_img:bulk}    
+		</div><!--/.switcher content-->
+		        
+         {/promo_slideshow}
+	 
+        </div><!--/.article-image .two-thirds columns-->
+	
+			
+			
+	<div class="five columns">
+		
+		<h3>Featured Articles</h3>	
+				
+		{page_featured_items}
+     
+            
+           <h4><a href="{path="site/entry"}/{page_featured_items:url_title}">{page_featured_items:title}</a></h4>
+           
+           {exp:trunchtml chars="200" inline="... " ending="<em class='readmore'><a href='{title_permalink=work/entry}'>more</a> &rarr;</em>"}{if page_featured_items:standfirst}{page_featured_items:standfirst}{/if}{if page_featured_items:standfirst_learning}{page_featured_items:standfirst_learning}{/if}{/exp:trunchtml}
+	     
+       <!--   <div class="">
+       <a href="{path="site/entry"}/{page_featured_items:url_title}"> more &#x2192;</a>
+	  <div class="">More on <h5>{page_featured_items:title}</h5><br>{page_featured_items:standfirst}</div>
+	  </div>         -->
+          
+                  {/page_featured_items} 
+        </div><!--/.one-third columns-->
+                 
+ 
+   
+            
+	
+		
+		
+		{/exp:channel:entries}
+		
+		
+		
+		
+		
+		<div class="one-third columns">
+		
+		
+		{exp:channel:entries channel="learning" limit="6" show="" disable="member_data|trackbacks|pagination" offset="1"}
+					<div class="one-third column">
+				<h3><a href="{channel_url}entry/{url_title}">{title}</a></h3>	
+				
+				
+				<br class="clear" />
+				{exp:trunchtml chars="150" inline="..." ending="<p class='readmore'><a href='{title_permalink=work/entry}'>Read more</a> &rarr;</p>"}{standfirst}{first_para}{/exp:trunchtml}
+			</div><!--/.eight columns-->
+			
+			
+			{/exp:channel:entries}
+		
+		
+	                    </div>
+		
+	
+		
+		
+		

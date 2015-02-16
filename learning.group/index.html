@@ -1,0 +1,189 @@
+{layout="includes/.html_layout"}
+
+<!-- Index Page Layout
+	================================================== -->
+
+		
+		
+	        <div class="container">
+		
+		<!-- section for welcome screen-->
+		
+		<div class="sixteen columns"> 
+			
+			<h1 class="remove-bottom add-top">The London Met Elearning Matrix</h1>
+			<h5>Skills, Resources, Expertise and Research in the Academic Community</h5>
+			<hr />
+			
+		</div><!--/.sixteen columns-->
+		
+{exp:channel:entries channel="sitewide" disable="member_data|trackbacks|pagination" entry_id="11"}
+	
+<div class="article-image eleven columns homepage-image">
+	
+	<div id="switcher-panel"></div><!--/#switcher-panel to swap out images from thumbs-->
+	
+	
+	  {promo_slideshow limit="1"}
+	
+		<div id="{promo_slideshow:row_id}-content" class="switcher-content show">	
+		<a>{exp:ce_img:single src="{promo_slideshow:image_selection}" width="650" height="370" crop="yes"}</a>
+		<div class="homepage-image-desc">{promo_slideshow:title} <br /> {promo_slideshow:description} </div>	    
+		</div><!--/.switcher content show-->
+	  
+	  {/promo_slideshow}
+	  
+</div><!--/.article-image-->
+	  
+		  {promo_slideshow limit="3"}
+       
+	<div class="five columns homepage-image-thumbs  homepage-image-th">
+
+		{exp:ce_img:bulk src="{promo_slideshow:image_selection}" width="280" height="115" crop="yes"}<a id="{promo_slideshow:row_id}" class="switcher"><img src="{promo_slideshow:image_selection}" alt="" width="{width}" height="{height}"  /></a>
+	<div class="homepage-image-desc-th">{promo_slideshow:title}</div>
+		{/exp:ce_img:bulk}
+	</div><!--/.homepage-image-thumbs-->
+		
+		
+		
+		<div id="{promo_slideshow:row_id}-content" class="switcher-content">   
+		{exp:ce_img:bulk src="{promo_slideshow:image_selection}" width="650" height="370" crop="yes"}<a id="{promo_slideshow:row_id}" class="switcher"><img src="{promo_slideshow:image_selection}" alt="" width="{width}" height="{height}"  /></a>
+		 <div class="homepage-image-desc">{promo_slideshow:title} <br /> {promo_slideshow:description} </div>
+		{/exp:ce_img:bulk}    
+		</div><!--/.switcher content-->
+		        
+         {/promo_slideshow}
+	 
+		<br class="clear" />
+
+
+	 
+{/exp:channel:entries}
+
+{exp:channel:entries channel="sitewide" disable="member_data|trackbacks|pagination" entry_id="11"}
+
+	<div class="five columns quickbox-panel add-top">
+			<h3>Quick Links</h3>
+			{quick_box_content}
+			
+			{heading}
+			{value}
+			{/heading}
+					
+			{textarea}
+			{if element_name=="Search Box"}
+			<div class="quickbox-section">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Social Box"}
+			<div class="quickbox-section quickbox-social">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Quick Links"}
+			<div class="quickbox-section quickbox-links">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Subscribe Email"}
+			<div class="quickbox-section">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Subscribe RSS"}
+			<div class="quickbox-section quickbox-links">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:else}<!--anything else-->
+			<div class="quickbox-section">
+			{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}
+			</div>
+			{/if}
+			{/textarea}
+			
+			
+			{if fieldpack_list}
+			{fieldpack_list}
+			
+			<ul>
+			{values}
+			<li><a href="{item}">{item}</a></li>
+			{/values}
+			</ul>
+			{/fieldpack_list}
+			{/if}
+
+		{/quick_box_content}
+		
+		</div> 
+	
+	{/exp:channel:entries}
+	
+		
+	<div class="eleven columns add-top"> 
+		<div id="masonry-box-home">
+{exp:channel:entries channel="sitewide" limit="6" show="not 11" disable="member_data|trackbacks|pagination" fixed_order="12|15|16|13|14|17"}
+	
+			<div class="five columns homepage-intro-section item-home">
+				
+			<h4><a href="{channel_url}{url_title}">{title}</a></h4>	
+			{static_page_body}
+			
+			{heading}
+			{value}
+			{/heading}
+			
+			{editor}	      
+			{value}
+			{/editor}
+				
+			{/static_page_body}				
+			</div><!--/five columns-->
+		
+	{/exp:channel:entries}		
+				
+		</div><!--/masonry-box-home -->
+	</div><!--/eleven columns-->
+
+	<br class="clear" />
+		
+	<h3>Featured Articles</h3>
+		
+{exp:channel:entries channel="sitewide" disable="member_data|trackbacks|pagination" limit="4" entry_id="11"}				
+		{page_featured_items}
+		
+			<div class="four columns homepage-featured">
+			       
+			      <h4><a href="{page_featured_items:channel_url}entry/{page_featured_items:url_title}">{page_featured_items:title}</a></h4>
+			      
+			      {exp:trunchtml chars="150" inline="... " ending="<em class='readmore'> <a href='{page_featured_items:channel_url}entry/{page_featured_items:url_title}'>more</a> &rarr;</em>"}{exp:tagstripper:tagsToStrip tags="p"}{if page_featured_items:standfirst}{page_featured_items:standfirst}{/if}{if page_featured_items:standfirst_learning}{page_featured_items:standfirst_learning}{/if}{/exp:tagstripper:tagsToStrip}{/exp:trunchtml}
+			</div>
+		{/page_featured_items}
+		{/exp:channel:entries}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+{!--
+Notes for grid
+<h4>Search the Site</h4>
+{quick_box_content:search_box_form}
+  <h4>Social</h4>
+{quick_box_content:social_box}
+
+  <h4>Quicklinks</h4>
+{quick_box_content:quicklink_box}
+  <h4>Subscribe by Email</h4>
+{quick_box_content:subscribe_email_box_form}
+  <h4>Subscribe by RSS</h4>
+{quick_box_content:subscribe_rss_box_form}--}	
+		
+		
+	
+		
+		
+		

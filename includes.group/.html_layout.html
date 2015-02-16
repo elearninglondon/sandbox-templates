@@ -18,7 +18,7 @@
          <meta name="description" content="The London Met eLearning Matrix is a resoucre for academic professional development and shared practice in higher education in London, UK. ">
          <meta name="author" content="Pen Lister">
             <meta property="og:title" content="{site_name}">
-        <meta property="og:image" content="{img_url_prefix}p1080527__medium.jpg">
+        <meta property="og:image" content="{img_url_prefix}p1080527_medium.jpg">
             <meta property="og:description" content="Penworks.net is the portfolio and project site for Pen Lister.">
                 <meta property="og:url" content="http://www.penworks.net">
 {/if}
@@ -98,22 +98,55 @@ HEAD
 		
 		
 		
-		<nav id="menu" class="menu">
-			<ul>
+	<nav id="menu" class="menu">
+		
+	<ul>
 				
-			<li class="has-submenu"><a href="#learning">Teaching and Learning</a>
-				<ul class="sub-menu">
-				<li class="has-submenu"><a href="#">Novice</a>
-					<ul>
-					<li><a href="#">First Level</a></li>
-					<li><a href="#">Second Level</a></li>
-					</ul>
-				<li><a href="#">Practitioner</a></li>
-				<li><a href="#">Expert</a></li>
+	<li class="has-submenu"><a href="#learning">Teaching and Learning</a>
+		<ul class="sub-menu">
+			<!--<li class="has-submenu"><a href="#">Expertise, Skills & Resources</a>
+							<ul class="sub-menu">-->
+					<li class="has-submenu"><a href="#">By Skill Level</a>
+						<ul class="sub-menu">
+						<li><a href="#">Basics</a></li>
+						<li><a href="#">Intermediate</a></li>
+						<li><a href="#">Advanced</a></li>
+						<li><a href="#">Advocacy</a></li>
+						</ul>
+					</li>
+					<li class="has-submenu"><a href="#">By Subject Area</a>
+						<ul class="sub-menu">
+						<li><a href="#">STEM</a></li>
+						<li><a href="#">Social Sciences</a></li>
+						<li><a href="#">Arts & Humanities</a></li>
+						<li><a href="#">Health & Social Care</a></li>
+						</ul>
+<!--					</li>
 				</ul>
-			</li>
+			<li class="has-submenu"><a href="#">Expertise</a>
+				<ul class="sub-menu">
+					<li class="has-submenu"><a href="#">By Skill Level</a>
+						<ul class="sub-menu">
+						<li><a href="#">Basics</a></li>
+						<li><a href="#">Intermediate</a></li>
+						<li><a href="#">Advanced</a></li>
+						<li><a href="#">Advocacy</a></li>
+						</ul>
+					</li>
+					<li class="has-submenu"><a href="#">By Subject Area</a>
+						<ul class="sub-menu">
+						<li><a href="#">STEM</a></li>
+						<li><a href="#">Social Sciences</a></li>
+						<li><a href="#">Arts & Humanities</a></li>
+						<li><a href="#">Health & Social Care</a></li>
+						</ul>
+					</li>
+				</ul>-->
+				
+		</ul>
+	</li>
 			
-			<li class="has-submenu"><a href="#community">Academic Community</a>
+	<li class="has-submenu"><a href="#community">Academic Community</a>
 				<ul class="sub-menu">		
 				<li class="has-submenu"><a href="#">Partners</a>
 					<ul class="sub-menu">
@@ -123,18 +156,37 @@ HEAD
 					<li><a href="#">UEL</a></li>
 					</ul>
 				</li>					
-				<li><a href="#">Author Area</a></li>
-				<li><a href="#">Featured Guest Authors</a></li>
-				<li><a href="#">Applied Research</a></li>
-				<li><a href="#">Case Studies</a></li>			
-				<li><a href="#">Shortreads</a></li>
+				<li class="has-submenu"><a href="#">Research</a>
+					<ul class="sub-menu">
+						<li><a href="#">STEM</a></li>
+						<li><a href="#">Social Sciences</a></li>
+						<li><a href="#">Arts & Humanities</a></li>
+						<li><a href="#">Health & Social Care</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Shortread Views & Reviews</a></li>
+				
 				</ul>
 			
-			<li class="has-submenu"><a href="#resources">Skills and Resources</a>
+			<li class="has-submenu"><a href="{site_url}series">Learning Series</a>
 				<ul class="sub-menu">
-				<li><a href="#">Tutorials</a></li>
-				<li><a href="#">Resource Reviews</a></li>
-				<li><a href="#">Shortread Tutorials</a></li>
+					<li class="has-submenu"><a href="#">By Subject Area</a>
+						<ul class="sub-menu">
+						<li><a href="#">STEM</a></li>
+						<li><a href="#">Social Sciences</a></li>
+						<li><a href="#">Arts & Humanities</a></li>
+						<li><a href="#">Health & Social Care</a></li>
+						</ul>
+					</li>
+					<li class="has-submenu"><a href="#">By Accreditation</a>
+						<ul class="sub-menu">
+						<li><a href="#">SEDA</a></li>
+						<li><a href="#">PG Cert</a></li>
+						<li><a href="#">Undergraduate</a></li>
+						<li><a href="#">Post Graduate</a></li>
+						</ul>
+					</li>
+					<li><a href="{site_url}series/list">All Series</a></li>
 				</ul>
 			</li>
 			<li class="has-submenu"><a href="#ematrix-more">More about the eMatrix</a>
@@ -273,6 +325,20 @@ jQuery(document).ready(function($) {
 	});
 
 	
+	// $(window).load(function(){
+	$(document).ready(function(){
+		
+  var $container = $('#masonry-box-home');
+  $container.imagesLoaded( function(){
+	$container.masonry({
+	columnWidth: 10,
+	itemSelector: '.item-home',
+	gutter: 5
+	});
+  });
+  
+	});
+
 	$(document).ready(function(){
 		
   var $container = $('#masonry-box1');
@@ -285,8 +351,6 @@ jQuery(document).ready(function($) {
   });
   
 	});
-
-
 
 
 /*$(document).ready(function() { //you can replace $ with Jquery

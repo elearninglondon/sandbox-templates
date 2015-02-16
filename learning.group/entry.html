@@ -1,24 +1,31 @@
 {layout="includes/.html_layout"}
 
-<!-- ENTRY DETAIL 
+<!-- T&L ENTRY DETAIL 
 	================================================== -->
 
 <div class="container">
 
-	<div class="sixteen columns">
+	<!--<div class="sixteen columns">-->
 			
-	<div class="fourteen columns add-top offset-by-one">	
+	<div class="sixteen columns add-top">	
 			
 	<article>	
 			
-	{exp:channel:entries channel="practice" limit="1" disable="pagination|member_data|trackbacks"}
+	{exp:channel:entries channel="learning" limit="1" disable="pagination|member_data|trackbacks"}
 			
 		<h2>{title}</h2>
-		<hr />
+		 <hr />
+                
+                <div class="sixteen columns add-bottom ">	
+		<div class="pubdate entry">{entry_date format="%M %d, %Y"}</div>			
+		<h4>Author: {author}</h4>	
+		</div>
+                
+               
 
-		<div class="article-image">
+		<div class="article-image fifteen columns offset-by-one">
 	{promo_image}
-		{exp:ce_img:pair src="{promo_image:image_file}" width="760" height="432" crop="yes"}
+		{exp:ce_img:pair src="{promo_image:image_file}" width="800" height="420" crop="yes"}
 		<a><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" /></a>
 		 {/exp:ce_img:pair}
 		<div class="image-credit-hover">{promo_image:image_title} | {promo_image:image_credit} | {promo_image:image_licence}</div>
@@ -26,12 +33,9 @@
 		<!--<br class="clear" />-->
 		</div>
 		
-		<br class="clear" />
+	
 		
-		<div class="thirteen columns add-bottom ">	
-		<div class="pubdate entry">{entry_date format="%M %d, %Y"}</div>			
-		<h4>Author: {author}</h4>	
-		</div>
+		
 			
 		<br class="clear" />
 		
@@ -74,7 +78,7 @@
 		{if:elseif element_name=="Quote Right"}
 		<div class="one-third column pullquote-right">{value}</div>
 		{if:else}<!--Embed Rich Media-->
-		<div class="offset-by-one two-thirds column">
+		<div class="offset-by-two thirteen columns">
                     <div class="videoWrapper embed">
                         {value}
                     </div>
@@ -86,12 +90,14 @@
                 
             <!--IMAGE SLIDESHOW IN BODY-->
                 {assets}
-                <div class="article-image">
+                <div class="article-image fifteen columns offset-by-one">
+                    
+                <div id="switcher-panel"></div><!--/#switcher-panel to swap out images from thumbs-->
                         
                 {files kind="image" limit="1"}
                            
                     <div id="{name}-content" class="switcher-content show">
-                    <a>{exp:ce_img:single src="{url}" width="800" height="400" crop="yes"}</a>
+                    <a>{exp:ce_img:single src="{url}" width="800" height="420" crop="yes"}</a>
                     <div class="image-credit-hover">{title} | {author} | {location}</div>
                     </div>
                 
@@ -99,18 +105,17 @@
 
                 {files kind="image" limit="10"}
     
-                <div id="switcher-panel"></div><!--/#switcher-panel to swap out images from thumbs-->
     
                 {if total_files > "1"}
                
-                    {exp:ce_img:pair src="{url}" width="800" height="400"}          
+                    {exp:ce_img:pair src="{url}" width="800" height="420"}          
                     <div class="article-image-thumbs">
-                    {exp:ce_img:bulk src="{url}" width="125" height="90" crop="yes"}<a id="{name}" class="switcher"><img src="{url}" alt="" width="{width}" height="{height}"  /></a>
+                    {exp:ce_img:bulk src="{url}" width="130" height="95" crop="yes"}<a id="{name}" class="switcher"><img src="{url}" alt="" width="{width}" height="{height}"  /></a>
                     {/exp:ce_img:bulk}
                     </div>
                     
                     <div id="{name}-content" class="switcher-content">   
-                    {exp:ce_img:bulk src="{url}" width="800" height="400" crop="yes" attributes ='style="float:left;margin:0 auto;"'}<a id="{name}" class="switcher"><img src="{url}" alt="" width="{width}" height="{height}"  /></a>
+                    {exp:ce_img:bulk src="{url}" width="800" height="420" crop="yes"}<a id="{name}" class="switcher"><img src="{url}" alt="" width="{width}" height="{height}"  /></a>
                      <div class="image-credit-hover">{if title}{title}{/if}{if author} | {author} {/if}{if location}| {location}{/if}</div>
                     {/exp:ce_img:bulk}    
                     </div>
@@ -119,8 +124,10 @@
                 {/if}
     
                 {/files}
-                </div> <!--/.article-image-->  
+                </div> <!--/.article-image-->
+                <br class="clear" />
                 {/assets}
+                
                 
 
 		{assets}
@@ -143,19 +150,6 @@
 		{/fieldpack_list}
 		{/if}
                 
-                
-                {!--{gallery}
-                    {if images}
-                        {images}
-                            Thumbnail: <img src="{thumb}" /><br />
-                            Original: <img src="{image}" /><br />
-                            Image type: {extension}<br />
-                            Image size: {size}<br />
-                            Caption: {caption}<br />
-                        {/images}
-                    {/if}
-                {/gallery}--}
-       
 
 	{/content}<!--/ end of content elements fields-->
 
@@ -168,31 +162,26 @@
                 {/if}
 	
         
-	
-	</div><!--/.fourteen .columns .offset-by-one-->
         
-        <div class="fourteen columns add-top category-footer">
+         </article>
+	
+	<!--</div>--><!--/.sixteen .columns .offset-by-one-->
+
+	
+	</div><!--/.sixteen .columns-->
+        <div class="sixteen columns add-top category-footer">
             
 		<h4>Categories</h4>
 
-              {!--<p>Filed in {categories show="1|2" backspace="2"}{category_name}, {/categories} </p>--}
-              {categories show="3|4|5|6|7|8"}
-                    <ul>
-                        <li> <a href="{path={segment_1}/list/}">{category_name}</a></li>
-                    </ul>
-              {/categories}
-                
-        </div><!--/.fourteen .columns-->
+	{exp:gwcode_categories entry_id="{entry_id}" style="linear" backspace="7"}
+		{if group_start}<strong>{cat_group_name}:</strong> {/if}
+		<a href="{path={segment_1}/list/}">{cat_name}</a>,&nbsp;
+	{/exp:gwcode_categories}
 	
-	</div><!--/.sixteen .columns-->
-
+    
+        </div><!--/.sixteen .columns .actegory-footer-->
 	{/exp:channel:entries}
 	
-	</article>
-        
-   
-       
-
 		
 <!--END OF ENTRY DETAIL - WOW, WE MADE IT!! -->
 

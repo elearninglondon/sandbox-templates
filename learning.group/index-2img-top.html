@@ -1,0 +1,110 @@
+{layout="includes/.html_layout"}
+
+<!-- Index Page Layout
+	================================================== -->
+
+		
+		
+	        <div class="container">
+		
+		<!-- section for welcome screen-->
+		
+		<div class="sixteen columns"> <!--THIS IS THE NARROW HEAD TITLE PART FOR EACH SECTION IF NEEDED-->
+			
+			<h1 class="remove-bottom add-top">The London Met Elearning Matrix</h1>
+			<h5>Skills, Resources, Expertise and Research in the Academic Community</h5>
+			<hr />
+			
+		</div><!--/END OF SIXTEEN COLUMNS deep DIV-->
+		
+{exp:channel:entries channel="learning" limit="2" disable="member_data|trackbacks|pagination"}
+		<div class="eight columns">
+			
+			{promo_image}
+			{exp:ce_img:single src="{promo_image:image_file}" width="550" height="auto" crop="yes"}
+
+			<div class="image-credit-hover">{promo_image:image_title} | {promo_image:image_credit} | {promo_image:image_licence}</div>
+			{/promo_image}
+			
+			<h3><a href="{channel_url}entry/{url_title}">{title}</a></h3>	
+			
+			{exp:trunchtml chars="500" inline="..." ending="<p class='readmore'><a href='{title_permalink=work/entry}'>Read more</a> &rarr;</p>"}{standfirst}{first_para}{/exp:trunchtml}
+		</div><!--/.eight columns-->
+		
+		{/exp:channel:entries}
+		
+	{!--	{exp:channel:entries channel="learning" entry_id="5" disable="member_data|trackbacks|pagination"}
+					<div class="one-third column">
+				<h3><a href="{channel_url}entry/{url_title}">{title}</a></h3>	
+				
+				
+				<br class="clear" />
+				{exp:trunchtml chars="550" inline="..." ending="<p class='readmore'><a href='{title_permalink=work/entry}'>Read more</a> &rarr;</p>"}{standfirst}{first_para}{/exp:trunchtml}
+			</div><!--/.eight columns-->
+			
+			
+			{/exp:channel:entries}--}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		<!-- section for more about the site -->
+		
+		
+	<span id="ematrix-more" name="ematrix-more"class="anchor">.</span>
+	
+	<div class="sixteen columns">
+			
+			<h1 class="remove-bottom" style="margin-top: 100px">More about the eMatrix</h1>
+			<h5>Legal info and Help</h5>
+			<hr />
+			
+		</div>
+		<div class="eight columns">
+			<h3>Using the Site</h3>
+			<p>We've put together a few pages to help you use the site as easily as possible, and hget the most out of it. Something we haven't covered? Send us a question using the form.</p>
+			<ul class="square">
+				<li><strong>FAQ</strong> - your most common queries answered</li>
+				<li><strong>Accessibility</strong> - Things to do to make the site accessible </li>
+				<li><strong>Using the site</strong> - how to get the most out of our site</li>
+			</ul>
+			
+			<h3>Legal Info</h3>
+			<p>For the legal info on terms and conditions, copyright and cookie privacy, head over to our <a href="#">Legal section</a>.</p>
+		</div>
+		
+	
+		
+		<div class="eight columns add-bottom">
+			<h3>Send us a question</h3>
+		<fieldset><form name="" action="" method="POST" enctype="application/x-www-form-urlencoded">
+		<input type="text" name="Your name" value="" size="40" maxlength="40"  min="" max="" accept=""/>
+		<input type="text" name="Your email" value="" size="40" maxlength="40"  min="" max="" accept=""/>
+			<textarea name="Message" cols="40" rows="4" wrap="SOFT"></textarea>
+			<input type="submit"/><input type="reset"/>
+			
+		</form></fieldset>
+		</div>
+		
+		

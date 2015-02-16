@@ -1,0 +1,219 @@
+{layout="includes/.html_layout"}
+
+<!-- Learning Series Index Layout
+	================================================== -->
+
+<div class="container">
+
+	<div class="sixteen columns add-top">
+			
+	<!--<div class="fourteen columns add-top ">	-->
+			
+	<article>	
+			
+	{exp:channel:entries channel="sitewide" limit="1" disable="pagination|member_data|trackbacks" entry_id="18"}
+			
+            <h2>{title}</h2>
+            <hr />
+
+		
+         
+            
+            <div class="sixteen columns add-bottom ">	
+            <div class="pubdate entry">{entry_date format="%M %d, %Y"}
+            </div>			
+            <h4>Author: {author}</h4>	
+            </div>
+                    
+            <br class="clear" />
+            
+
+	
+	
+	{static_page_body}
+	
+		{heading}
+			{value}
+			{/heading}
+			
+			{editor}
+			{value}
+			{/editor}
+	
+	
+	
+	
+	
+	{/static_page_body}
+	
+	
+
+	
+	
+	
+	
+	
+	<div class="five columns quickbox-panel">
+		<h3>Quick View</h3>
+			{quick_box_content}
+			
+			{heading}
+			{value}
+			{/heading}
+			
+			{editor}
+			{value}
+			{/editor}
+					
+			{textarea}
+			{if element_name=="Search Box"}
+			<div class="quickbox-section">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Social Box"}
+			<div class="quickbox-section quickbox-social">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Quick Links"}
+			<div class="quickbox-section quickbox-links">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Subscribe Email"}
+			<div class="quickbox-section">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Subscribe RSS"}
+			<div class="quickbox-section quickbox-links">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:else}<!--anything else-->
+			<div class="quickbox-section">
+			{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}
+			</div>
+			{/if}
+			{/textarea}
+			
+			
+			{if fieldpack_list}
+			{fieldpack_list}
+			
+			<ul>
+			{values}
+			<li><a href="{item}">{item}</a></li>
+			{/values}
+			</ul>
+			{/fieldpack_list}
+			{/if}
+
+		{/quick_box_content}
+		
+		</div> 
+    
+    
+    	     <div class="series-category-display">   
+		<div class="category-display">
+		{exp:channel:categories category_group="2" channel="series" parent_only="no" disable="member_data|pagination"}
+		    <a href="{path='series/{category_url_title}'}">{category_name}</a>
+		{/exp:channel:categories}
+		</div>
+		<div class="category-display">
+		{exp:channel:categories category_group="3" channel="series" parent_only="no" disable="member_data|pagination"}
+		    <a href="{path='series/{category_url_title}'}">{category_name}</a>
+		{/exp:channel:categories}
+		</div>
+     </div>      
+     
+          
+         
+            <!--relationship entries for learning series-->
+             <div id="masonry-box1">
+             <ol class="eleven columns learning-series-entry-list custom-counter">
+            
+             {learning_series_entries}
+     
+             <li class="ten columns item">
+           <h4><a href="{path="site/entry"}/{learning_series_entries:url_title}">{learning_series_entries:title}</a></h4>
+             {learning_series_entries:promo_image}
+        {exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
+        <a href="{path="site/entry"}/{learning_series_entries:url_title}"/><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/></a>
+        {/learning_series_entries:promo_image}		
+             {/exp:ce_img:pair}
+             {learning_series_entries:standfirst}
+          <div class="hover-more"> <a href="{path="site/entry"}/{learning_series_entries:url_title}"> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>  
+        {/learning_series_entries}       
+        </div><!--/#masonry-box-->
+        </ol>   
+    
+          <br class="clear" />
+	
+	{if "{refs:total_rows}" > 0}
+        <h4>Further Reading</h4>
+        <ul>   {refs}
+        <li>{refs:names}, {refs:pub_year}, {refs:title_work}, {refs:publisher}, {refs:country} </li>
+        {/refs}</ul>  
+        {/if}
+	
+	
+		
+	<!--</div>--><!--/.fourteen .columns-->
+	
+	</div><!--/.sixteen .columns-->
+
+	{/exp:channel:entries}
+        
+        
+
+        
+        
+{!--<div class="series-category-display">
+
+    <div class="category-display">
+    <h2>Accreditation</h2>
+    {exp:gwcode_catmenu cat_url_title="{last_segment}" group_id="4"}
+    {if no_results}
+    <!--
+    no valid category was provided in the URL segment
+    show only root categories as our menu
+    -->
+    {exp:channel:categories  channel="series" parent_only="yes" disable="member_data|pagination"}
+    <a href="{path='series/{category_url_title}'}">{category_name}</a>
+    {/exp:channel:categories}
+    {/if}
+    <a href="{path='series/{complete_path}'}"{if current} class="current"{/if}>{cat_name}</a>
+    {/exp:gwcode_catmenu}
+    </div>
+    
+    <div class="category-display">
+    <h2>Subject Area</h2>
+    {exp:gwcode_catmenu cat_url_title="{last_segment}" group_id="2"}
+    {if no_results}
+    <!--
+    no valid category was provided in the URL segment
+    show only root categories as our menu
+    -->
+    {exp:channel:categories  channel="series" parent_only="yes" disable="member_data|pagination"}
+    <a href="{path='series/{category_url_title}'}">{category_name}</a>
+    {/exp:channel:categories}
+    {/if}
+    <a href="{path='series/{complete_path}'}"{if current} class="current"{/if}>{cat_name}</a>
+    {/exp:gwcode_catmenu}
+    </div>
+	    
+    <div class="category-display">
+    <h2>Skill Level</h2>
+    {exp:gwcode_catmenu cat_url_title="{last_segment}" group_id="3"}
+    {if no_results}
+    <!--
+    no valid category was provided in the URL segment
+    show only root categories as our menu
+    -->
+    {exp:channel:categories  channel="series" parent_only="yes" disable="member_data|pagination"}
+    <a href="{path='series/{category_url_title}'}">{category_name}</a>
+    {/exp:channel:categories}
+    {/if}
+    <a href="{path='series/{complete_path}'}"{if current} class="current"{/if}>{cat_name}</a>
+    {/exp:gwcode_catmenu}
+    </div>
+
+</div>--}
+        
+        
+        
+	
+	</article>
+        
+        
+
+
+		
+<!--END OF Learning Series DETAIL - WOW, WE MADE IT!! -->

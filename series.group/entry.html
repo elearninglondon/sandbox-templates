@@ -1,6 +1,6 @@
 {layout="includes/.html_layout"}
 
-<!-- Learning Series Page Layout
+<!-- Learning Series Entry Layout
 	================================================== -->
 
 <div class="container">
@@ -11,7 +11,7 @@
 			
 	<article>	
 			
-	{exp:channel:entries channel="learning_series" limit="1" disable="pagination|member_data|trackbacks"}
+	{exp:channel:entries channel="series" limit="1" disable="pagination|member_data|trackbacks"}
 			
             <h2>{title}</h2>
             <hr />
@@ -85,12 +85,102 @@
 
        
  
-      <div class="five columns learning-series-quote-panel">
-        {series_highlights}
-        {editor}
-        {/series_highlights}
-        </div>
+      <!--<div class="five columns learning-series-quote-panel">-->
+      <!--<div class="five columns quickbox-panel">
+	      {series_highlights}
+	      {editor}
+	      {/series_highlights}
+	      </div>-->
           
+	  
+	
+
+	<div class="five columns quickbox-panel">
+			<h3>Series Highlights</h3>
+			{series_highlights_panel}
+			
+			{heading}
+			{value}
+			{/heading}
+			
+			{editor}
+			<div class="quickbox-section">{value}</div>
+			{/editor}
+					
+			{textarea}
+			{if element_name=="search"}
+			<div class="quickbox-section">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Social Box"}
+			<div class="quickbox-section quickbox-social">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Quick Links"}
+			<div class="quickbox-section quickbox-links">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Subscribe Email"}
+			<div class="quickbox-section">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:elseif element_name=="Subscribe RSS"}
+			<div class="quickbox-section quickbox-links">{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{if:else}<!--anything else-->
+			<div class="quickbox-section">
+			{exp:tagstripper:tagsToStrip tags="div|br|p"}{value}{/exp:tagstripper:tagsToStrip}</div>
+			{/if}
+			{/textarea}
+			
+			
+			{if fieldpack_list}
+			{fieldpack_list}
+			<div class="quickbox-section quickbox-links"><ul>
+			{values}
+			<li><a href="{item}">{item}</a></li>
+			{/values}
+			</ul></div>
+			{/fieldpack_list}
+			{/if}
+			
+			{if fieldpack_checkboxes}
+			{fieldpack_checkboxes}
+			<div class="quickbox-section quickbox-links">
+			<ul>
+			{values}
+			<li>{option}</li>
+			{/values}
+			</ul>
+			</div>
+			{/fieldpack_checkboxes}
+			{/if}
+			
+			{if fieldpack_multiselect}
+			{fieldpack_multiselect}
+			<div class="quickbox-section quickbox-links">
+			<ul>
+			{values}
+			<li>{option}</li>
+			{/values}
+			</ul>
+			</div>
+			{/fieldpack_multiselect}
+			{/if}
+			
+			{if fieldpack_dropdown}
+			{fieldpack_dropdown}
+			<div class="quickbox-section quickbox-links"><ul><li>{value}</li></ul></div>
+			{/fieldpack_dropdown}
+			{/if}
+			
+			{assets}
+			<div class="quickbox-section  quickbox-links">
+			<ul>
+			{files kind="pdf|word|excel|text|audio|video" var_prefix="articles"}
+			<li><a href="{articles:url}">{articles:title} ({articles:extension}, {articles:size})</a></li>
+			{/files}
+			</ul>
+			</div>
+			{/assets}
+			
+
+		{/series_highlights_panel}
+		
+		</div> 
+	
+	
      
           
          
@@ -101,19 +191,15 @@
              {learning_series_entries}
      
              <li class="ten columns item">
-           <h4><a href="{path="site/entry"}/{learning_series_entries:url_title}">{learning_series_entries:title}</a></h4>
+           <h4><a href="{learning_series_entries:channel_url}entry/{learning_series_entries:url_title}">{learning_series_entries:title}</a></h4>
              {learning_series_entries:promo_image}
         {exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
-        <a href="{path="site/entry"}/{learning_series_entries:url_title}"/><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/></a>
+        <a href="{learning_series_entries:url_title}"/><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/></a>
         {/learning_series_entries:promo_image}		
              {/exp:ce_img:pair}
              {learning_series_entries:standfirst}
-          <div class="hover-more"> <a href="{path="site/entry"}/{learning_series_entries:url_title}"> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>  
+          <div class="hover-more"> <a href="{learning_series_entries:channel_url}entry/{learning_series_entries:url_title}"> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>  
           
-          
-         {!--  {embed="includes/.related-learning"}            --}
-       
- 
    
         {/learning_series_entries}       
         </div><!--/#masonry-box-->
