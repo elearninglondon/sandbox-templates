@@ -28,13 +28,13 @@
             <br class="clear" />
             
             <div class="standfirst-entry">
-            <p>{standfirst_learning}</p>
+            <p>{learning_series_standfirst}</p>
             </div>
 			
 		<!--<p>{first_para}	</p>-->
 	
 	
-	{learning_series_overview}
+	{learning_series_description}
 		
             {heading}
             {value}
@@ -81,7 +81,7 @@
             </table>
             {/table}
                         
-	{/learning_series_overview}<!--/ end of content elements fields-->
+	{/learning_series_description}<!--/ end of content elements fields-->
 
        
  
@@ -194,9 +194,9 @@
            <h4><a href="{learning_series_entries:channel_url}entry/{learning_series_entries:url_title}">{learning_series_entries:title}</a></h4>
              {learning_series_entries:promo_image}
         {exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
-        <a href="{learning_series_entries:url_title}"/><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/></a>
-        {/learning_series_entries:promo_image}		
-             {/exp:ce_img:pair}
+        <a href="{learning_series_entries:channel_url}entry/{learning_series_entries:url_title}"/><img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/></a>
+        {/exp:ce_img:pair} {/learning_series_entries:promo_image}		
+            
              {learning_series_entries:standfirst}
           <div class="hover-more"> <a href="{learning_series_entries:channel_url}entry/{learning_series_entries:url_title}"> more &#x2192;</a><div class="learning-series-entry-list-hover item">More on <h5>{learning_series_entries:title}</h5><br>{learning_series_entries:standfirst}</div></div>   </li>  
           

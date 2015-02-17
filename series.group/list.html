@@ -1,0 +1,80 @@
+{layout="includes/.html_layout"}
+
+
+<!-- SERIES LISTINGS CODE
+	================================================== -->
+	
+ <div class="container">
+
+	
+		<div class="sixteen columns">
+			{exp:channel:category_heading channel="series" disable="category_fields"}
+			<h1 class="remove-bottom add-top">{category_name}</h1>
+			<h5>{category_description}</h5>
+			<hr />
+			{/exp:channel:category_heading}
+		</div>
+	
+        
+        <div id="masonry-box">
+	{exp:channel:entries channel="series" limit="6" disable="member_data|trackbacks" sort="desc" dynamic="no"}
+	
+	{if no_results}
+<div class="list_entry">
+<span class="no-results">Sorry, no results for this category - try another!</span>
+</div>
+{/if}
+   
+                {if featured_series}
+
+		<div class="eight columns item">
+			<h3><a href="{channel_url}entry/{url_title}">{title}</a></h3>	
+			{!--{promo_image}
+							    {exp:ce_img:pair src="{promo_image:image_file}" width="470" height="auto" crop="yes"}
+							    <img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}"class="promo-list"/>
+							    {/exp:ce_img:pair}
+			<div class="image-credit-hover">{promo_image:image_title} | {promo_image:image_credit} | {promo_image:image_licence}</div>
+			{/promo_image}	--}
+			
+			
+			<br class="clear" />
+			{learning_series_standfirst}
+		</div><!--/.eight columns-->
+                
+	   
+	
+	{if:else}
+	
+		
+		<div class="eight columns item">	
+			<h3><a href="{channel_url}entry/{url_title}">{title}</a></h3>
+			{!--{promo_image}
+							    {exp:ce_img:pair src="{promo_image:image_file}" width="220" height="auto" crop="yes"}
+							    <img src="{made}" alt="{promo_image:image_title}" width="{width}" height="{height}" style="float:left;"/>
+							    {/exp:ce_img:pair}
+							    <div class="image-credit-hover">{promo_image:image_title} | {promo_image:image_credit} | {promo_image:image_licence}</div>
+							    {/promo_image}--}
+			
+			
+			
+			{learning_series_standfirst}
+		</div><!--/.eight columns-->
+                
+        {/if}
+		
+                
+		{if total_results <= '1'}
+                {paginate}
+                <div class="pagination"> Page {current_page} of {total_pages} <i class="fa fa-arrows-h"></i>  <span class="custom-counter">{pagination_links}</span></div>
+                {/paginate}
+		{/if}
+
+                
+                
+	{/exp:channel:entries}
+        
+        
+	</div><!--/#masonry-box-->
+	
+	
+<!--END OF LISTINGS - WOW, WE MADE IT!! -->
